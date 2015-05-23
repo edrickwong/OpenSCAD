@@ -1,13 +1,28 @@
 module tama(){
-    radius = 60.325/2;
+    
+    tama_diameter = 19/8;
+    
+    sleeve_diameter = 0.5;
+    sleeve_height = 19/8;
+    
+    string_diameter = 0.125;
+    string_height = 4;
+    
+    hole_diameter = 0.75;
+    hole_height = 0.1875;
+    
     difference(){
-        sphere(radius);
-        translate([0,0,-26.9875]) cylinder(h = 60.325, r = 12.7/2);
-        translate([0,0,-35]) cylinder(h = 70, r = 3.175/2);
-        
-        translate([0,0, 25.3995]) cylinder(h = 4.763, r1 = 12.7/2, r2 = 19.05/2);
+        //main sphere
+        sphere(r = tama_diameter/2);
+        //sleeve difference
+        translate([0,0,-35/32]) cylinder(h = sleeve_height, r = sleeve_diameter/2);
+        //string hole difference
+        translate([0,0,-
+        2]) cylinder(h = hole_heigh, r = string_diameter/2);
+        //hole difference
+        translate([0,0,1]) cylinder(h = hole_height, r1 = sleeve_diameter/2, r2 = hole_diameter/2);
     }
 }
 
-
-tama();
+//mm to inch scaling
+scale(25.4) tama($fn = 100);
